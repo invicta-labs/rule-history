@@ -69,6 +69,9 @@ ol, ul { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
 .steps { list-style: none; padding: 0; counter-reset: s; gap: 14px; }
 .steps li { counter-increment: s; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; }
 .steps li::before { content: counter(s); font-family: var(--font-display); font-weight: 800; width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--paper); display: grid; place-items: center; }
+figure.shot { margin: 0; display: grid; gap: 6px; }
+figure.shot img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+figure.shot figcaption { color: var(--muted); font-size: 0.92em; }
 .faq { display: grid; gap: 16px; }
 .faq div { display: grid; gap: 4px; }
 .tbl { overflow-x: auto; }
@@ -131,7 +134,7 @@ tbody th { border-top: 1px solid var(--line); text-transform: none; letter-spaci
         <ul>
           <li><b>Rules</b> lists every automation rule: on or off, what starts it, when it last changed and how many copies are saved.</li>
           <li>Press <b>Open</b> on a rule to see its saved copies, newest first.</li>
-          <li><b>See what changed</b> describes the difference in plain words, for example <code>Step 2 · Issue comment — Comment: "Hello" → "Bye"</code>.</li>
+          <li><b>See what changed</b> describes the difference in plain words, for example <code>Step 2 · Work item comment — Comment: "Hello" → "Bye"</code>.</li>
           <li><b>Go back to this version</b> puts that copy back in Jira. The current version is saved first, so a restore can be undone.</li>
           <li>Next to every change you see <b>who</b> made it and the exact time.</li>
           <li><b>What happened</b> is the timeline of every change across all rules, kept for 3 months.</li>
@@ -139,6 +142,10 @@ tbody th { border-top: 1px solid var(--line); text-transform: none; letter-spaci
           <li>On the site-wide page, <b>search and filters</b> narrow everything down by project, trigger type or owner.</li>
           <li><b>Check now</b> saves changes immediately instead of waiting for the hourly check.</li>
         </ul>
+        <figure class="shot">
+          <a href="img/see-what-changed.png"><img src="img/see-what-changed.png" alt="A rule's history: the newest copy, who changed it, and the changes in plain words" loading="lazy" width="1554" height="697"></a>
+          <figcaption>Open a rule and press <b>See what changed</b>: every change in plain words, with who made it. Click the picture to see it full size.</figcaption>
+        </figure>
       </section>
 
       <section id="howto">
