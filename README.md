@@ -4,4 +4,4 @@ Help, privacy policy and support for the **Automation Rule History** app for Jir
 
 Website: https://invicta-labs.github.io/rule-history/
 
-Support: rulehistorysupport@gmail.com
+Support: labsinvicta@gmail.com
