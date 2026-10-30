@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Help, privacy policy and support for Automation Rule History, a Jira Cloud app that keeps the history of your automation rules.">
+<meta name="description" content="Help, how-to guides, pricing, security, privacy policy and support for Automation Rule History, a Jira Cloud app that keeps the history of your automation rules.">
 <link rel="icon" type="image/png" href="logo-144.png">
 <title>Automation Rule History</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,6 +76,8 @@ table { border-collapse: collapse; width: 100%; font-size: .95rem; }
 th, td { text-align: left; padding: 10px 8px; border-top: 1px solid var(--line); vertical-align: top; }
 th { font-family: var(--font-display); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border-top: 0; }
 .note { color: var(--muted); font-size: .92rem; }
+tbody th { border-top: 1px solid var(--line); text-transform: none; letter-spacing: 0; font-size: .95rem; color: var(--fg); width: 9.5rem; }
+.faq ol { margin-top: 4px; }
 .pill { display: inline-block; font-family: var(--font-display); font-weight: 700; font-size: .78rem; padding: 2px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
 .yes { color: var(--ok); font-weight: 600; }
 .contact { font-family: var(--font-mono); font-size: .95rem; user-select: all; background: var(--accent-soft); padding: 6px 10px; border-radius: 6px; width: fit-content; max-width: 100%; overflow-wrap: anywhere; }
@@ -103,9 +105,12 @@ th { font-family: var(--font-display); font-size: .78rem; letter-spacing: .06em;
       <span class="label">On this page</span>
       <a href="#start">Get started</a>
       <a href="#use">Everyday use</a>
+      <a href="#howto">How-to guides</a>
       <a href="#faq">Questions</a>
+      <a href="#pricing">Pricing</a>
       <a href="#privacy">Privacy policy</a>
       <a href="#security">Security</a>
+      <a href="#ip">IP allowlisting</a>
       <a href="#support">Support</a>
     </nav>
 
@@ -133,17 +138,51 @@ th { font-family: var(--font-display); font-size: .78rem; letter-spacing: .06em;
         </ul>
       </section>
 
+      <section id="howto">
+        <h2>How-to guides</h2>
+        <div class="faq">
+          <div><h3>Undo a change that broke a rule</h3>
+            <ol><li>Open the app and press <b>Open</b> next to the rule.</li><li>Press <b>See what changed</b> on the newest line to see what was changed.</li><li>On the copy from before the change, press <b>Go back to this version</b>, then <b>Yes, go back</b>.</li><li>The rule in Jira is now exactly as it was. The broken version stays in the list, so you can switch back.</li></ol></div>
+          <div><h3>Bring back a deleted rule</h3>
+            <ol><li>In <b>Rules</b>, find the rule with the red <span class="pill">Deleted</span> label.</li><li>Press <b>Open</b>, then <b>Go back to this version</b> on the newest copy.</li><li>The rule is created again in Jira with the same ID and settings.</li></ol></div>
+          <div><h3>See everything that changed this week</h3>
+            <ol><li>Open the <b>What happened</b> tab.</li><li>Each line shows when the rule was edited in Jira, what kind of change it was and a short summary such as <code>2 changes · Start (when the rule runs), Step 1 · Send email</code>.</li></ol></div>
+          <div><h3>Open the app from a project</h3>
+            <p>Go to <b>Project settings</b> of any project and pick <b>Automation Rule History</b> in the left menu, next to Automation. There you only see that project's rules, plus rules that run on every project. Admins also find the app in the <b>Apps</b> menu at the top of Jira.</p></div>
+          <div><h3>Change or remove the key</h3>
+            <p>Open the <b>Settings</b> tab. Repeat the steps with a new key, or press <b>Remove the key and stop saving</b>. Saved copies are kept until the app is uninstalled.</p></div>
+        </div>
+      </section>
+
       <section id="faq">
         <h2>Questions</h2>
         <div class="faq">
           <div><h3>A rule stopped working. What do I do?</h3><p>Open the rule, find the last copy from when it still worked and press <b>Go back to this version</b>.</p></div>
           <div><h3>Someone deleted a rule. Can I get it back?</h3><p>Yes, if the app saved it before it was deleted. Deleted rules stay in the list with a red <span class="pill">Deleted</span> label. Open it and press <b>Go back to this version</b>; the rule is created again with the same ID.</p></div>
-          <div><h3>Can I see who changed a rule?</h3><p>For actions taken in this app, such as a restore, you see the person's name. For edits made directly in Jira, Atlassian does not give apps the editor's name yet, so the app shows <i>Changed in Jira</i>. You still see when and exactly what changed.</p></div>
+          <div><h3>Can I see who changed a rule?</h3><p>For actions taken in this app, such as a restore, you see the person's name. For edits made directly in Jira, the app shows the exact time of the edit and what changed. Atlassian does not give apps the editor's name yet; as soon as it does, the app will show it.</p></div>
           <div><h3>How many copies are kept?</h3><p>The last 100 copies of each rule. A new copy is only saved when the rule really changed.</p></div>
           <div><h3>Which rules are covered?</h3><p>All Jira automation rules on the site that the key's owner can manage: global, multi-project and single-project rules.</p></div>
           <div><h3>Why does the key need to belong to a Jira admin?</h3><p>Atlassian's automation API only answers site administrators, and it does not accept apps' own credentials.</p></div>
           <div><h3>What happens if the subscription ends?</h3><p>The app stops checking for changes, but nothing is deleted. Renew and everything works again.</p></div>
         </div>
+      </section>
+
+      <section id="pricing">
+        <h2>Pricing</h2>
+        <p>Billed through the Atlassian Marketplace, per user of your Jira site, like every Jira app. Every site gets a 30-day free trial.</p>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Jira users on your site</th><th>Price per user per month</th></tr></thead>
+            <tbody>
+              <tr><td>Up to 10</td><td><span class="yes">Free</span></td></tr>
+              <tr><td>11 – 100</td><td>US$ 0.50</td></tr>
+              <tr><td>101 – 250</td><td>US$ 0.30</td></tr>
+              <tr><td>251 – 1,000</td><td>US$ 0.20</td></tr>
+              <tr><td>More than 1,000</td><td>US$ 0.10</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">The price shown on the Atlassian Marketplace listing is the one that applies. Annual plans and taxes follow Atlassian's standard Marketplace terms.</p>
       </section>
 
       <section id="privacy">
@@ -171,12 +210,32 @@ th { font-family: var(--font-display); font-size: .78rem; letter-spacing: .06em;
 
       <section id="security">
         <h2>Security</h2>
-        <ul>
-          <li>Only Jira administrators can open the app; every action checks this on the server.</li>
-          <li>The API key is kept in Forge's encrypted secret storage and is never shown again after setup.</li>
-          <li>The app uses the key only to read automation rules and to restore a version a Jira admin chooses.</li>
-          <li>All traffic goes over HTTPS to Atlassian.</li>
-        </ul>
+        <div class="tbl">
+          <table>
+            <tbody>
+              <tr><th>Hosting</th><td>Built on Atlassian Forge. All code runs and all data is stored on Atlassian's cloud. The publisher has no servers and no access to your data.</td></tr>
+              <tr><th>Who can use it</th><td>Only Jira administrators. Every request is checked on the server, not only in the screen.</td></tr>
+              <tr><th>API key</th><td>Stored in Forge's encrypted secret storage. It is never shown again after setup and never leaves Atlassian. Used only to read rules and to restore a version an admin chooses.</td></tr>
+              <tr><th>Permissions</th><td>Two Jira scopes only: <code>read:jira-work</code> (to check that the user is an admin) and <code>storage:app</code> (to keep the saved copies).</td></tr>
+              <tr><th>Network</th><td>One outside address only: <code>api.atlassian.com</code>, Atlassian's own automation API. All traffic is encrypted with HTTPS.</td></tr>
+              <tr><th>Data</th><td>Encrypted at rest and in transit by the Forge platform. No analytics, tracking or third-party services.</td></tr>
+              <tr><th>Undo safety</th><td>Before any restore, the current version is saved, so no restore can lose work.</td></tr>
+              <tr><th>Report a problem</th><td>Send security issues to the support address below with "Security" in the subject. We reply within two working days.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="ip">
+        <h2>IP allowlisting</h2>
+        <p>If your Atlassian organization uses IP allowlisting, Atlassian may refuse the app's requests, because they come from Atlassian's Forge platform and not from your office network. Setup then fails with <i>"Access was refused"</i> even though the key is correct.</p>
+        <ol>
+          <li>Open <a href="https://ip-ranges.atlassian.com/" rel="noopener">ip-ranges.atlassian.com</a>. It lists Atlassian's IP ranges as JSON.</li>
+          <li>Take the ranges whose product is <code>forge</code>.</li>
+          <li>In <b>Atlassian Administration → Security → IP allowlists</b>, add them to the allowlist that covers API access.</li>
+          <li>Press <b>Connect</b> again in the app.</li>
+        </ol>
+        <p class="note">Atlassian can change these ranges, so check the list from time to time. If you need help, contact support.</p>
       </section>
 
       <section id="support">
