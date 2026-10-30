@@ -39,7 +39,7 @@
 body {
   background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 17px; line-height: 1.6;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 32px 72px; margin: 0;
+  padding-block: 32px 72px;
 }
 a { color: var(--accent); }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
@@ -96,7 +96,7 @@ tbody th { border-top: 1px solid var(--line); text-transform: none; letter-spaci
     </svg>
     <div>
       <h1>Automation Rule History</h1>
-      <p class="lede">See what changed in your Jira automation rules, get warned when one is turned off or deleted, and put any earlier version back with one click.</p>
+      <p class="lede">See what changed in your Jira automation rules and who changed it, bring back deleted rules, and put any earlier version back with one click.</p>
     </div>
   </header>
 
@@ -129,12 +129,14 @@ tbody th { border-top: 1px solid var(--line); text-transform: none; letter-spaci
       <section id="use">
         <h2>Everyday use</h2>
         <ul>
-          <li><b>Rules</b> lists every automation rule, whether it is on, off or deleted, when it last changed and how many copies are saved.</li>
+          <li><b>Rules</b> lists every automation rule: on or off, what starts it, when it last changed and how many copies are saved.</li>
           <li>Press <b>Open</b> on a rule to see its saved copies, newest first.</li>
           <li><b>See what changed</b> describes the difference in plain words, for example <code>Step 2 · Issue comment — Comment: "Hello" → "Bye"</code>.</li>
           <li><b>Go back to this version</b> puts that copy back in Jira. The current version is saved first, so a restore can be undone.</li>
-          <li><b>What happened</b> is the timeline of every change across all rules.</li>
-          <li>A yellow banner warns you when a rule was turned off or deleted in the last 7 days.</li>
+          <li>Next to every change you see <b>who</b> made it and the exact time.</li>
+          <li><b>What happened</b> is the timeline of every change across all rules, kept for 3 months.</li>
+          <li><b>Deleted rules</b> lists every rule that was deleted, when and by whom, with a button to bring it back.</li>
+          <li>On the site-wide page, <b>search and filters</b> narrow everything down by project, trigger type or owner.</li>
           <li><b>Check now</b> saves changes immediately instead of waiting for the hourly check.</li>
         </ul>
       </section>
@@ -145,13 +147,15 @@ tbody th { border-top: 1px solid var(--line); text-transform: none; letter-spaci
           <div><h3>Undo a change that broke a rule</h3>
             <ol><li>Open the app and press <b>Open</b> next to the rule.</li><li>Press <b>See what changed</b> on the newest line to see what was changed.</li><li>On the copy from before the change, press <b>Go back to this version</b>, then <b>Yes, go back</b>.</li><li>The rule in Jira is now exactly as it was. The broken version stays in the list, so you can switch back.</li></ol></div>
           <div><h3>Bring back a deleted rule</h3>
-            <ol><li>In <b>Rules</b>, find the rule with the red <span class="pill">Deleted</span> label.</li><li>Press <b>Open</b>, then <b>Go back to this version</b> on the newest copy.</li><li>The rule is created again in Jira with the same ID and settings.</li></ol></div>
+            <ol><li>Open the <b>Deleted rules</b> tab. You see when each rule was deleted and by whom.</li><li>Press <b>Bring it back</b>, then <b>Go back to this version</b> on the newest copy.</li><li>The rule is created again in Jira with the same ID and settings.</li></ol></div>
+          <div><h3>Find rules by project, trigger or owner</h3>
+            <ol><li>Open the app from <b>Settings ⚙ → Apps</b> (the site-wide page).</li><li>Type in the search box, or pick one or more <b>Projects</b>, a <b>Starts when</b> trigger type (for example <i>Manual trigger</i> or <i>Scheduled</i>) or an <b>Owner</b>.</li><li>The filters apply to <b>Rules</b>, <b>What happened</b> and <b>Deleted rules</b>. After opening a rule, <b>← Back</b> returns to the same tab with your filters kept.</li></ol></div>
           <div><h3>See everything that changed this week</h3>
             <ol><li>Open the <b>What happened</b> tab.</li><li>Each line shows when the rule was edited in Jira, what kind of change it was and a short summary such as <code>2 changes · Start (when the rule runs), Step 1 · Send email</code>.</li></ol></div>
           <div><h3>Open the app from a project</h3>
-            <p>Go to <b>Project settings</b> of any project and pick <b>Automation Rule History</b> in the left menu, next to Automation. There you only see that project's rules, plus rules that run on every project. Admins also find the app in the <b>Apps</b> menu at the top of Jira.</p></div>
+            <p>Go to <b>Project settings</b> of any project and pick <b>Automation Rule History</b> in the left menu, next to Automation. There you only see that project's rules. Project administrators can use this page too: they see the history of their project's rules and can put back rules that belong only to their project. Jira admins also find the app in the <b>Apps</b> menu.</p></div>
           <div><h3>Change or remove the key</h3>
-            <p>Open the <b>Settings</b> tab. Repeat the steps with a new key, or press <b>Remove the key and stop saving</b>. Saved copies are kept until the app is uninstalled.</p></div>
+            <p>Open the app from <b>Settings ⚙ → Apps</b> and pick the <b>Settings</b> tab (Jira admins only; it is not shown on project pages). Repeat the steps with a new key, or press <b>Remove the key and stop saving</b>. Saved copies are kept until the app is uninstalled.</p></div>
         </div>
       </section>
 
@@ -159,8 +163,10 @@ tbody th { border-top: 1px solid var(--line); text-transform: none; letter-spaci
         <h2>Questions</h2>
         <div class="faq">
           <div><h3>A rule stopped working. What do I do?</h3><p>Open the rule, find the last copy from when it still worked and press <b>Go back to this version</b>.</p></div>
-          <div><h3>Someone deleted a rule. Can I get it back?</h3><p>Yes, if the app saved it before it was deleted. Deleted rules stay in the list with a red <span class="pill">Deleted</span> label. Open it and press <b>Go back to this version</b>; the rule is created again with the same ID.</p></div>
-          <div><h3>Can I see who changed a rule?</h3><p>For actions taken in this app, such as a restore, you see the person's name. For edits made directly in Jira, the app shows the exact time of the edit and what changed. Atlassian does not give apps the editor's name yet; as soon as it does, the app will show it.</p></div>
+          <div><h3>Someone deleted a rule. Can I get it back?</h3><p>Yes, if the app saved it before it was deleted. Open the <b>Deleted rules</b> tab to see when it was deleted and by whom, press <b>Bring it back</b> and then <b>Go back to this version</b>. The rule is created again with the same ID.</p></div>
+          <div><h3>Can I see who changed a rule?</h3><p>Yes. The app matches each change with Jira's automation audit log and shows the person next to it, for edits, turning rules on or off, and deletions. Restores made in the app always show who did them. If the audit log has no matching entry, the app shows the exact time of the edit instead.</p></div>
+          <div><h3>Who can use the app?</h3><p>Jira administrators can use everything. Project administrators can open the app from their project's settings: they see that project's rules and can put back rules that belong only to their project. Rules shared by several projects can only be put back by a Jira administrator, just like in Jira itself.</p></div>
+          <div><h3>How long is the history kept?</h3><p>The <b>What happened</b> timeline keeps 3 months. Saved copies of each rule (the last 100) are kept while the app is installed, so deleted rules can always be brought back.</p></div>
           <div><h3>How many copies are kept?</h3><p>The last 100 copies of each rule. A new copy is only saved when the rule really changed.</p></div>
           <div><h3>Which rules are covered?</h3><p>All Jira automation rules on the site that the key's owner can manage: global, multi-project and single-project rules.</p></div>
           <div><h3>Why does the key need to belong to a Jira admin?</h3><p>Atlassian's automation API only answers site administrators, and it does not accept apps' own credentials.</p></div>
@@ -195,8 +201,8 @@ tbody th { border-top: 1px solid var(--line); text-transform: none; letter-spaci
             <thead><tr><th>What the app stores</th><th>Why</th><th>Where</th></tr></thead>
             <tbody>
               <tr><td>Copies of your automation rules (name, trigger, steps, settings). Rules can contain account IDs, email addresses, field values or web-request settings that you configured.</td><td>To show changes and restore earlier versions</td><td>Forge storage, inside Atlassian's cloud</td></tr>
-              <tr><td>A timeline of changes: time, rule name and type of change</td><td>For the "What happened" list and alerts</td><td>Forge storage</td></tr>
-              <tr><td>The Atlassian account ID of the person who restores a version</td><td>To show who restored it</td><td>Forge storage</td></tr>
+              <tr><td>A timeline of changes: time, rule name and type of change</td><td>For the "What happened" and "Deleted rules" lists</td><td>Forge storage, kept 3 months</td></tr>
+              <tr><td>The Atlassian account ID of the person who changed, turned off, deleted or restored a rule (taken from Jira's automation audit log, or from the app for restores)</td><td>To show who made each change</td><td>Forge storage</td></tr>
               <tr><td>The admin email and API key entered in setup</td><td>To read and restore rules through Atlassian's automation API</td><td>Forge encrypted secret storage</td></tr>
             </tbody>
           </table>
@@ -204,7 +210,7 @@ tbody th { border-top: 1px solid var(--line); text-transform: none; letter-spaci
         <ul>
           <li><b>Who receives your data:</b> nobody outside Atlassian. The app only talks to Atlassian's own API at <code>api.atlassian.com</code>.</li>
           <li><b>No tracking:</b> the app has no analytics, advertising or third-party services.</li>
-          <li><b>How long it is kept:</b> the last 100 copies per rule while the app is installed. Removing the key in <b>Settings</b> deletes it at once. When the app is uninstalled, Atlassian deletes the app's stored data according to the Forge platform's data retention rules.</li>
+          <li><b>How long it is kept:</b> the last 100 copies per rule while the app is installed; the timeline of changes for 3 months. Removing the key in <b>Settings</b> deletes it at once. When the app is uninstalled, Atlassian deletes the app's stored data according to the Forge platform's data retention rules.</li>
           <li><b>Your rights:</b> to see, correct or delete data, contact support below. Most data can be removed directly by uninstalling the app.</li>
         </ul>
       </section>
@@ -215,10 +221,10 @@ tbody th { border-top: 1px solid var(--line); text-transform: none; letter-spaci
           <table>
             <tbody>
               <tr><th>Hosting</th><td>Built on Atlassian Forge. All code runs and all data is stored on Atlassian's cloud. The publisher has no servers and no access to your data.</td></tr>
-              <tr><th>Who can use it</th><td>Only Jira administrators. Every request is checked on the server, not only in the screen.</td></tr>
+              <tr><th>Who can use it</th><td>Jira administrators, and project administrators on their own project's page (only that project's rules). The connection settings are for Jira administrators only. Every request is checked on the server, not only in the screen.</td></tr>
               <tr><th>API key</th><td>Stored in Forge's encrypted secret storage. It is never shown again after setup and never leaves Atlassian. Used only to read rules and to restore a version an admin chooses.</td></tr>
-              <tr><th>Permissions</th><td>Two Jira scopes only: <code>read:jira-work</code> (to check that the user is an admin) and <code>storage:app</code> (to keep the saved copies).</td></tr>
-              <tr><th>Network</th><td>One outside address only: <code>api.atlassian.com</code>, Atlassian's own automation API. All traffic is encrypted with HTTPS.</td></tr>
+              <tr><th>Permissions</th><td>Two Jira scopes only: <code>read:jira-work</code> (to check that the user is a Jira or project admin) and <code>storage:app</code> (to keep the saved copies).</td></tr>
+              <tr><th>Network</th><td>One outside address only: <code>api.atlassian.com</code>, Atlassian's own automation API and automation audit log. All traffic is encrypted with HTTPS.</td></tr>
               <tr><th>Data</th><td>Encrypted at rest and in transit by the Forge platform. No analytics, tracking or third-party services.</td></tr>
               <tr><th>Undo safety</th><td>Before any restore, the current version is saved, so no restore can lose work.</td></tr>
               <tr><th>Report a problem</th><td>Send security issues to the support address below with "Security" in the subject. We reply within two working days.</td></tr>
@@ -248,5 +254,6 @@ tbody th { border-top: 1px solid var(--line); text-transform: none; letter-spaci
     </main>
   </div>
 </div>
+
 </body>
 </html>
