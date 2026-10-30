@@ -1,0 +1,8 @@
+{
+  "warnDaysBefore": 14,
+  "keys": [
+    { "name": "GitHub token for the rule-history repo", "renewAt": "https://github.com/settings/personal-access-tokens", "replaceIn": "~/.github-env (GITHUB_TOKEN)", "expires": "2027-01-28" },
+    { "name": "Atlassian API token rule-history-github-check", "renewAt": "https://id.atlassian.com/manage-profile/security/api-tokens", "replaceIn": "GitHub repo secret ATLASSIAN_API_TOKEN", "expires": null },
+    { "name": "Atlassian API token for the Forge CLI", "renewAt": "https://id.atlassian.com/manage-profile/security/api-tokens", "replaceIn": "~/.forge-env (FORGE_API_TOKEN)", "expires": null }
+  ]
+}

@@ -16,3 +16,6 @@ jobs:
           ATLASSIAN_EMAIL: ${{ secrets.ATLASSIAN_EMAIL }}
           ATLASSIAN_API_TOKEN: ${{ secrets.ATLASSIAN_API_TOKEN }}
           CLOUD_ID: e274eb4a-2a1d-405d-87d6-ec41a9a7dc09
+      - name: Key expiry reminder
+        if: always()
+        run: node canary/check-key-dates.mjs
